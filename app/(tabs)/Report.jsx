@@ -1,25 +1,42 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, Button, Alert} from 'react-native';
+import { View, Text, TextInput, StyleSheet, Button, Alert } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
+import { createClient } from '@supabase/supabase-js';
+
+// ✅ Your Supabase credentials
+const supabaseUrl = 'https://zllenqslszyocxhprhea.supabase.co'; // Replace with your URL
+const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpsbGVucXNsc3p5b2N4aHByaGVhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI5NDg4NTEsImV4cCI6MjA2ODUyNDg1MX0.zY-nLw44ZQ5nQlvCRDqpA0-XMCDlgTfTpIQMKb-FMCQ'; // Replace with your anon key
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 export default function ReportScreen() {
   const [selectedIssue, setSelectedIssue] = useState('');
   const [description, setDescription] = useState('');
   const [location, setLocation] = useState('');
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!selectedIssue && !description) {
       Alert.alert('Missing Information', 'Please select or describe the issue.');
       return;
     }
 
-    // Simulated report submission
-    Alert.alert('Report Sent', 'Thank you for your report. Authorities will respond shortly.');
+    // 🚀 Insert report into Supabase
+    const { data, error } = await supabase.from('Reports').insert([
+      {
+        issue: selectedIssue,
+        description: description,
+        location: location
+      }
+    ]);
 
-    // Reset form
-    setSelectedIssue('');
-    setDescription('');
-    setLocation('');
+    if (error) {
+      Alert.alert('Error', 'Could not send report. Please try again.');
+      console.error(error);
+    } else {
+      Alert.alert('Report Sent', 'Thank you for your report. Authorities will respond shortly.');
+      setSelectedIssue('');
+      setDescription('');
+      setLocation('');
+    }
   };
 
   return (

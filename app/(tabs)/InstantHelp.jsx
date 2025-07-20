@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Alert, Linking } from 'react-native';
-import Clipboard from '@react-native-clipboard/clipboard';
+import { View, Text, StyleSheet, TouchableOpacity, Alert, Linking, Clipboard } from 'react-native';
+// import Clipboard from '@react-native-clipboard/clipboard';
 
 export default function InstantHelpScreen() {
   const ussdCode = '*123*911#';
