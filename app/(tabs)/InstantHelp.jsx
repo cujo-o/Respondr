@@ -5,16 +5,16 @@ import { View, Text, StyleSheet, TouchableOpacity, Alert, Linking, Platform, Cli
 export default function InstantHelpScreen() {
   const ussdCode = '*123*911#';
 
-  const handleHelpPress = async () => {
-    await Clipboard.setStringAsync(ussdCode);
+    const handleHelpPress = () => {
+    Clipboard.setString(ussdCode);
 
-    Linking.openURL(`tel:${ussdCode}`).catch(() => {
-      Alert.alert(
-        'USSD Code Copied',
-        'We could not open your dialer. Please paste and dial manually.'
-      );
-    });
+    // Simulate a call (may open dialer depending on phone permissions)
+    Linking.openURL(`tel:${ussdCode}`)
+      .catch(() => {
+        Alert.alert('Copied to Clipboard', 'USSD code copied. Please dial it manually.');
+      });
   };
+
 
   return (
     <View style={styles.container}>

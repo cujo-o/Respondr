@@ -46,11 +46,6 @@ const styles = StyleSheet.create({
     color: '#555',
     marginBottom: 20,
   },
-  image: {
-    width: 200,
-    height: 200,
-    marginBottom: 40,
-  },
   buttonPrimary: {
     backgroundColor: '#FF3B30',
     paddingVertical: 14,
