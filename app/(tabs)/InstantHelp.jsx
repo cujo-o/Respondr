@@ -1,12 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Alert, Linking, Platform, Clipboard } from 'react-native';
-//import * as Clipboard from 'expo-clipboard'; // use this with Expo
+import { View, Text, StyleSheet, TouchableOpacity, Alert, Linking, Platform } from 'react-native';
+import * as Clipboard from 'expo-clipboard'; // use this with Expo
 
 export default function InstantHelpScreen() {
-  const ussdCode = '*123*911#';
+  const ussdCode = '112#';
 
-    const handleHelpPress = () => {
-    Clipboard.setString(ussdCode);
+    const handleHelpPress = async() => {
+    await Clipboard.setStringAsync(ussdCode);
 
     // Simulate a call (may open dialer depending on phone permissions)
     Linking.openURL(`tel:${ussdCode}`)
