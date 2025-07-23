@@ -44,7 +44,7 @@ export default function TabLayout() {
         name="InstantHelp"
         options={{
           title: 'Instant HelpScreen',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="gearshape.fill" color={color} />,
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="chevron.right" color={color} />,
         }}
       />
     </Tabs>
