@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert, Platform } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { createClient } from '@supabase/supabase-js';
 
@@ -10,6 +10,11 @@ const supabase = createClient(
 );
 
 export default function ReportScreen() {
+
+  const getandrioidplaceholdercolor = () => {
+    Platform.OS == 'android'? '#000000' : '#999999'
+  }
+
   const [selectedIssue, setSelectedIssue] = useState('');
   const [description, setDescription] = useState('');
   const [location, setLocation] = useState('');
@@ -59,6 +64,7 @@ export default function ReportScreen() {
         style={[styles.input, { minHeight: 80 }]}
         multiline
         placeholder="e.g. It happened near the old market road..."
+        placeholderTextColor={getandrioidplaceholdercolor()}
         value={description}
         onChangeText={setDescription}
       />
@@ -67,6 +73,7 @@ export default function ReportScreen() {
       <TextInput
         style={styles.input}
         placeholder="e.g. Phase 4, Kubwa, Abuja"
+        placeholderTextColor={getandrioidplaceholdercolor()}
         value={location}
         onChangeText={setLocation}
       />
