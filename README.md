@@ -49,7 +49,7 @@ Many communities in Africa and beyond lack accessible emergency systems. Phone l
 
 ## 📦 Download
 
-[🔗 Download APK](https://www.mediafire.com/file/qnbwdfmvp7xj2eo/Respondr+Civilian+App.apk/file)  
+[🔗 Download APK](https://expo.dev/artifacts/eas/bFgQ8ujojYfy79WTfpa9NZ.aab)  
 *(Replace this with your actual hosted APK link)*
 
 ---
